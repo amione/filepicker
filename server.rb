@@ -34,5 +34,5 @@ post "/upload" do
 	db = SQLite3::Database.new("urls.db")
 	last_id = db.execute("select id from urls order by id desc")
 	new_id = last_id + 1
-	write = db.execute("insert into urls(url, id) values (''#{filepicker_url}', #{new_id}')")
+	write = db.execute("insert into urls(url, id) values ('#{filepicker_url}', #{new_id})")
 end
