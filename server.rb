@@ -28,4 +28,9 @@ end
 
 post "/upload" do
 	puts params
+	filepicker_blob = JSON.parse(params)
+	filepicker_url = filepicker_blob("filepicker_url")
+	db = SQLite3::Database.new("urls")
+	create = db.execute("create table urls(url TEXT);")
+	write = db.execute("insert into urls(url) values (#{filepicker_url})")
 end
