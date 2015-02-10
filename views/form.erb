@@ -8,16 +8,16 @@
         <h1>Upload Image with Filepicker</h1>
 
         <h2>widget<h2>
+        <script>
+          function pickMe(e){console.log(JSON.stringify(e.fpfile));
+            }
+        </script>
         <form action="/upload" method="post">
             <input type="filepicker" name="filepicker_url" data-fp-apikey="AGuRTEh8XQbW9ChRV1XaVz" data-fp-mimetypes="image/*" data-fp-container="modal" onchange="pickMe(event)" />
         </form>
 
         <h2>javascript<h2>
    
-        <script>
-              function pickMe(e){
-                {console.log(JSON.stringify(e.fpfile));
-            }
-        </script>
+
     </body>pcik
 </html>
