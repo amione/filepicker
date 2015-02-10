@@ -1,6 +1,7 @@
 <html>
     <head>
         <title>FieldPlan</title>
+        <script src="//api.filepicker.io/v1/filepicker.js" type="text/javascript"></script>
     </head>
     <body>
         <h1>Hello World!<h1>
@@ -8,31 +9,16 @@
 
         <h2>widget<h2>
         <form action="/upload" method="post">
-            <input type="filepicker" name="filepicker_url" data-fp-apikey="AGuRTEh8XQbW9ChRV1XaVz" data-fp-mimetypes="*/*" data-fp-container="modal" />
+            <input type="filepicker" name="filepicker_url" data-fp-apikey="AGuRTEh8XQbW9ChRV1XaVz" data-fp-mimetypes="image/*" data-fp-container="modal" onchange="function(e){pickMe(e)}" />
         </form>
 
         <h2>javascript<h2>
-        <script src="//api.filepicker.io/v1/filepicker.js" type="text/javascript"></script>
+   
         <script>
-            filepicker.setKey("AGuRTEh8XQbW9ChRV1XaVz");
-              function pickMe(){
-              filepicker.pick(
-                {
-                    mimetypes: ['image/*', 'text/plain'],
-                    container: 'window',
-                    services:['COMPUTER', 'FACEBOOK', 'GMAIL', 'SKYDRIVE', 'IMAGE_SEARCH'],
-                },
-              function(Blob)
-                {
-                    console.log(Blob.url);
-                },
-              function(FPError)
-                {
-                    console.log(FPError.toString());
-                }  
-              );
+              function pickMe(e){
+                {console.log(JSON.stringify(e.fpfile));
+                }
             }
         </script>
-        <button onClick="pickMe()">Load an image</button>
-    </body>
+    </body>pcik
 </html>
