@@ -23,9 +23,9 @@ get '/' do
 end
 
 get '/upload' do
-
+	
 end
 
 post "/upload" do
-	puts params
+	puts filepicker_url
 end
