@@ -7,7 +7,7 @@ helpers do
   end
 end
 
-set :port, 80
+set :port, 8000
 set :bind, '0.0.0.0'
 
 #db = SQLite3::Database.new("file_url.db")
@@ -24,4 +24,8 @@ end
 
 get '/upload' do
 
+end
+
+post "/upload" do
+	puts params
 end
