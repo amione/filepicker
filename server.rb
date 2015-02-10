@@ -22,3 +22,6 @@ get '/' do
   erb :form
 end
 
+get '/upload' do
+
+end
