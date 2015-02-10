@@ -7,31 +7,33 @@
         <h1>Upload Image with Filepicker</h1>
 
         <h2>widget<h2>
-        <input type="filepicker" name="myfile" data-fp-apikey="AGuRTEh8XQbW9ChRV1XaVz" data-fp-mimetypes="*/*" data-fp-container="modal" />
+        <form action="/upload" method="post">
+            <input type="filepicker" name="filepicker_url" data-fp-apikey="AGuRTEh8XQbW9ChRV1XaVz" data-fp-mimetypes="*/*" data-fp-container="modal" />
+            <input type="submit">
+        </form>
 
         <h2>javascript<h2>
         <script src="//api.filepicker.io/v1/filepicker.js" type="text/javascript"></script>
         <script>
-                filepicker.setKey("AGuRTEh8XQbW9ChRV1XaVz");
-                function pickMe(){
-                filepicker.pick(
-                        {
-                          mimetypes: ['image/*', 'text/plain'],
-                          container: 'window',
-                          services:['COMPUTER', 'FACEBOOK', 'GMAIL', 'SKYDRIVE', 'IMAGE_SEARCH'],
-                         },
-                 function(Blob){
-                          console.log(Blob.url);
-                         },
-                 function(FPError){
-                          console.log(FPError.toString());
-                          }  
-                        );
-                        }
+            filepicker.setKey("AGuRTEh8XQbW9ChRV1XaVz");
+              function pickMe(){
+              filepicker.pick(
+                {
+                    mimetypes: ['image/*', 'text/plain'],
+                    container: 'window',
+                    services:['COMPUTER', 'FACEBOOK', 'GMAIL', 'SKYDRIVE', 'IMAGE_SEARCH'],
+                },
+              function(Blob)
+                {
+                    console.log(Blob.url);
+                },
+              function(FPError)
+                {
+                    console.log(FPError.toString());
+                }  
+              );
+            }
         </script>
         <button onClick="pickMe()">Load an image</button>
-        <form>
-                <input type="text" name="url">
-        </form>
     </body>
 </html>
