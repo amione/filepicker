@@ -23,7 +23,7 @@ get '/' do
 end
 
 get '/upload' do
-
+	erb :images
 end
 
 post "/upload" do
@@ -32,5 +32,7 @@ post "/upload" do
 	filepicker_url = filepicker_blob["filepicker_url"].to_s
 	puts filepicker_url
 	db = SQLite3::Database.new("urls.db")
-	write = db.execute("insert into urls(url) values ('#{filepicker_url}')")
+	last_id = db.execute("select id from urls order by id desc")
+	new_id = last_id + 1
+	write = db.execute("insert into urls(url, id) values (''#{filepicker_url}', #{new_id}')")
 end
