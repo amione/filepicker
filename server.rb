@@ -29,7 +29,7 @@ end
 post "/upload" do
 	puts params
 	filepicker_blob = params
-	filepicker_url = filepicker_blob["filepicker_url"]
+	filepicker_url = filepicker_blob["filepicker_url"].to_s
 	db = SQLite3::Database.new("urls.db")
 	write = db.execute("insert into urls(url) values (#{filepicker_url})")
 end
