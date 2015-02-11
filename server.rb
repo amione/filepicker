@@ -23,7 +23,7 @@ get '/' do
 end
 
 get '/upload' do
-
+	@filepicker_url
 end
 
 post "/upload" do
