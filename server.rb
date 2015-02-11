@@ -23,8 +23,7 @@ get '/' do
 end
 
 get '/upload' do
-	image_url = @filepicker_url
-	erb :url
+
 end
 
 post "/upload" do
@@ -36,4 +35,5 @@ post "/upload" do
 	last_id = db.execute("select id from urls order by id desc")
 	new_id = last_id[0][0].to_i + 1
 	write = db.execute("insert into urls(url, id) values ('#{@filepicker_url}', #{new_id})")
+	erb :url
 end
