@@ -23,6 +23,7 @@ get '/' do
 end
 
 get '/upload' do
+	image_url = @filepicker_url
 	erb :url
 end
 
