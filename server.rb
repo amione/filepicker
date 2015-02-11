@@ -23,7 +23,7 @@ get '/' do
 end
 
 get '/upload' do
-	erb :images
+	erb :url
 end
 
 post "/upload" do
