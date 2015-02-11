@@ -30,7 +30,7 @@ post "/upload" do
 	puts params
 	filepicker_blob = params
 	@filepicker_url = filepicker_blob["filepicker_url"].to_s
-	puts filepicker_url
+	puts @filepicker_url
 	db = SQLite3::Database.new("urls.db")
 	last_id = db.execute("select id from urls order by id desc")
 	new_id = last_id[0][0].to_i + 1
