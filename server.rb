@@ -23,7 +23,10 @@ get '/' do
 end
 
 get '/upload' do
-	erb :url
+	db = SQLite3::Database.new("urls.db")
+	last_url = db.execute("select url from urls order by id desc")
+	@last_image = last_url[0][0].to_s
+	erb :last
 end
 
 post "/upload" do
