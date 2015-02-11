@@ -38,5 +38,10 @@ post "/upload" do
 	last_id = db.execute("select id from urls order by id desc")
 	new_id = last_id[0][0].to_i + 1
 	write = db.execute("insert into urls(url, id) values ('#{@filepicker_url}', #{new_id})")
+	@get_list = db.execute('select * from urls order by id asc')
+	@last_in_array = last_id[0][0].to_i - 1
+	for x in 0..@last_in_array.to_i
+	  puts "#{@get_list[x][1]} #{@get_list[x][0]}"
+    end
 	erb :url
 end
