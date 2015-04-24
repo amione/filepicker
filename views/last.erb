@@ -14,14 +14,18 @@
               "<%= @last_image+'/convert?w=400&fit=max&cache=true' %>",
               {location: 'S3'},
               function(Blob){
-                console.log(JSON.stringify(Blob));
+                document.getElementById("stored").src = Blob[0].url
               }
             );
             }
         </script>
         <button onClick="storeMe()">Store Thumbnail?</button>
         <p>
-        <%= Blob %>
+        <h2>stored image (check url)<h2>
+        <div id="box">
+            <img id="stored" src="" width="400" height="612" />
+        </div>
+        <p>
         <h2>uploaded file list<h2>
  		<h3>
         <% for x in 0..@last_in_array.to_i %>
