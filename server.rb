@@ -39,7 +39,7 @@ post "/upload" do
 	erb :url
 end
 
-get '/upload' do
+get '/last' do
 	db = SQLite3::Database.new("urls.db")
 	last_url = db.execute("select url from urls order by id desc")
 	last_id = db.execute("select id from urls order by id desc")
