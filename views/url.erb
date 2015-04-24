@@ -5,11 +5,6 @@
     <body>
     	<h2>uploaded file<h2>
         <img src="<%= @filepicker_url %>"></img>
-        <h2>uploaded file list<h2>
- 		<h3>
-        <% for x in 0..@last_in_array.to_i %>
-	  		<li> <%= "#{@get_list[x][1]} #{@get_list[x][0]}" %> </li>
-    	<% end %>
-    	</h3>
+        <h2>for uploaded file list click <a href="http://fieldplan.farm:8000/last">here</a><h2>
     </body>
 </html>
