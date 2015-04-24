@@ -22,19 +22,6 @@ get '/' do
   erb :form
 end
 
-get '/upload' do
-	db = SQLite3::Database.new("urls.db")
-	last_url = db.execute("select url from urls order by id desc")
-	last_id = db.execute("select id from urls order by id desc")
-	@last_image = last_url[0][0].to_s
-	@get_list = db.execute('select * from urls order by id asc')
-	@last_in_array = last_id[0][0].to_i - 1
-	for x in 0..@last_in_array.to_i
-	  puts "#{@get_list[x][1]} #{@get_list[x][0]}"
-    end
-	erb :last
-end
-
 post "/upload" do
 	puts params
 	filepicker_blob = params
@@ -50,4 +37,17 @@ post "/upload" do
 	  puts "#{@get_list[x][1]} #{@get_list[x][0]}"
     end
 	erb :url
+end
+
+get '/upload' do
+	db = SQLite3::Database.new("urls.db")
+	last_url = db.execute("select url from urls order by id desc")
+	last_id = db.execute("select id from urls order by id desc")
+	@last_image = last_url[0][0].to_s
+	@get_list = db.execute('select * from urls order by id asc')
+	@last_in_array = last_id[0][0].to_i - 1
+	for x in 0..@last_in_array.to_i
+	  puts "#{@get_list[x][1]} #{@get_list[x][0]}"
+    end
+	erb :last
 end
