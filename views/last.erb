@@ -1,10 +1,25 @@
 <html>
     <head>
         <title>uploaded FilePicker images</title>
+        <script src="//api.filepicker.io/v1/filepicker.js" type="text/javascript"></script>
     </head>
     <body>
     	<h2>last uploaded file<h2>
         <img src="<%= @last_image+'/convert?w=400&fit=max&cache=true' %>"></img>
+        <script>
+            filepicker.setKey("AGuRTEh8XQbW9ChRV1XaVz");
+            function storeMe(){
+            filepicker.storeUrl(
+              "<%= @last_image+'/convert?w=400&fit=max&cache=true' %>",
+              {location: 'S3'},
+              function(Blob){
+                console.log(JSON.stringify(Blob));
+              }
+            );
+            }
+        </script>
+        <button onClick="storeMe()">Store Thumbnail?</button>
+        <p>
         <h2>uploaded file list<h2>
  		<h3>
         <% for x in 0..@last_in_array.to_i %>
