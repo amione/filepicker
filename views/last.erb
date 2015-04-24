@@ -4,7 +4,7 @@
     </head>
     <body>
     	<h2>last uploaded file<h2>
-        <img src="<%= @last_image %>"></img>
+        <img src="<%= @last_image+'/convert?w=400&fit=max&cache=true' %>"></img>
         <h2>uploaded file list<h2>
  		<h3>
         <% for x in 0..@last_in_array.to_i %>
