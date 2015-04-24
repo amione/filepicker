@@ -7,23 +7,27 @@
     	<h2>last uploaded file<h2>
         <img src="<%= @last_image+'/convert?w=400&fit=max&cache=true' %>"></img>
         <p>
+        <script src="//api.filepicker.io/v1/filepicker.js" type="text/javascript"></script>
         <script>
             filepicker.setKey("AGuRTEh8XQbW9ChRV1XaVz");
             function storeMe(){
             filepicker.storeUrl(
               "<%= @last_image+'/convert?w=400&fit=max&cache=true' %>",
               {location: 'S3'},
-              function(Blob){
+            function(Blob){
                 document.getElementById("stored").src = Blob[0].url
-              }
-            );
+                         },
+                function(FPError){
+                  console.log(FPError.toString());
+                          }  
+                        );
             }
         </script>
         <button onClick="storeMe()">Store Thumbnail?</button>
         <p>
         <h2>stored image (check url)<h2>
         <div id="box">
-            <img id="stored" src="" width="400" height="612" />
+            <img id="stored" src=""/>
         </div>
         <p>
         <h2>uploaded file list<h2>
