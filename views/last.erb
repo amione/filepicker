@@ -6,6 +6,7 @@
     <body>
     	<h2>last uploaded file<h2>
         <img src="<%= @last_image+'/convert?w=400&fit=max&cache=true' %>"></img>
+        <p>
         <script>
             filepicker.setKey("AGuRTEh8XQbW9ChRV1XaVz");
             function storeMe(){
@@ -13,6 +14,7 @@
               "<%= @last_image+'/convert?w=400&fit=max&cache=true' %>",
               {location: 'S3'},
               function(Blob){
+                document.getElementById("stored_conversion").src = Blob[0].url
                 console.log(JSON.stringify(Blob));
               }
             );
@@ -20,6 +22,7 @@
         </script>
         <button onClick="storeMe()">Store Thumbnail?</button>
         <p>
+        <%= puts id="stored_conversion" %>
         <h2>uploaded file list<h2>
  		<h3>
         <% for x in 0..@last_in_array.to_i %>
