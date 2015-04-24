@@ -15,20 +15,12 @@
               "<%= @last_image+'/convert?w=400&fit=max&cache=true' %>",
               {location: 'S3'},
             function(Blob){
-                document.getElementById("stored").src = Blob[0].url
-                         },
-                function(FPError){
-                  console.log(FPError.toString());
-                          }  
+                console.log(JSON.stringify(Blob));
+                         }  
                         );
             }
         </script>
         <button onClick="storeMe()">Store Thumbnail?</button>
-        <p>
-        <h2>stored image (check url)<h2>
-        <div id="box">
-            <img id="stored" src=""/>
-        </div>
         <p>
         <h2>uploaded file list<h2>
  		<h3>
