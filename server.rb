@@ -50,4 +50,5 @@ post "/upload" do
 	  puts "#{@get_list[x][1]} #{@get_list[x][0]}"
     end
 	erb :url
+	erb :last
 end
